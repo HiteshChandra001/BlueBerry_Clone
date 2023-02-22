@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        
+        * {
+            font-family: sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        #nav {
+            display: flex;
+            width: 99%;
+            margin: auto;
+            background: white;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        
+        #nav>img {
+            height: 90px;
+        }
+
+        #nav>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>div>a {
+            margin-right: 20px;
+
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #nav>div>a>i {
+            font-size: 30px;
+            margin-right: 5px;
+        }
+
+        #cont{
+            margin: auto;
+            width: 95%;
+        }
+        #cont>div>img{
+            width: 100%;
+            margin-bottom: 50px;
+        }
+
+        #log-reg{
+            display: flex;
+        }
+        #log-reg>div{
+            width: 45%;
+            background-color: rgba(236, 226, 226, 0.769);
+            padding: 30px;
+            margin: 15px;
+        }
+        #log-reg>div:first-child{
+            height: 260px;
+        }
+        #log-reg>div>form>*{
+            margin: 5px;
+        }
+        #log-reg>div>form>input{
+            width: 95%;
+            height: 35px;
+            font-size: 20px;
+        }
+        
+
+    </style>
+</head>
+<body>
+    
+    <div id="nav">
+        <img src="./photos/LOGO.PNG" alt="logo">
+        <div>
+            <a href="">GIFTS</a>
+            <a href="">NEW IN</a>
+            <a href="">WOMEN</a>
+            <a href="">MEN</a>
+            <a href="">CHILDREN</a>
+            <a href="">OUTERWERE</a>
+            <a href="">BAGS</a>
+            <a href="">STORIES</a>
+            <a href="">VALUES</a>
+
+        </div>
+        <div>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </div>
+    <div id="cont">
+        <div>
+            <img src="/photos/img-4.png" alt="">
+        </div>
+        <div id="log-reg">
+            <div>
+                <h4>SIGN IN</h4>
+                <p>Please enter your email and password below to access your account</p>
+                <form>
+                    <p>Email</p>
+                <input id='emailsign' type="email">
+                <p>Password</p>
+                <input id="pwdsign" type="password">
+                <div>
+                    <u>Forgotten Password</u>
+                    <button id="sign">Sign in</button>
+                </div>
+
+                </form>
+                
+            </div>
+            <div>
+                <h4>REGISTER</h4>
+                <p>Please register below to create an account</p>
+
+                <form>
+
+                    <p>Location</p>
+                    <input id="location" type="text" required>
+                    
+                    <p>First Name</p>
+                    <input id="fname" type="text" required>
+                    <p>Last Name</p>
+                    <input id="lname" type="text" required>
+                    <p>Phone</p>
+                    <input id="mono" type="number" required>
+                    <p>Email</p>
+                    <input id='email' type="email" required>
+                    <p>Password</p>
+                    <input id="pwd" type="password" required>
+    
+                    <button id="reg">Register</button>
+
+                </form>
+
+            </div>
+
+
+        </div>
+    </div>
+    
+</body>
+<script>
+    let userData=JSON.parse(localStorage.getItem('data'))||[];
+
+    let loc=document.getElementById('location');
+    let fname=document.getElementById('fname');
+    let lname=document.getElementById('lname');
+    let phone=document.getElementById('mono');
+    let email=document.getElementById('email');
+    let pwd=document.getElementById('pwd');
+
+    let regist=document.getElementById('reg');
+    
+    regist.addEventListener('click',function(e){
+        e.preventDefault();
+        let obj={
+            loc:loc.value,
+            fn:fname.value,
+            ln:lname.value,
+            ph:phone.value,
+            em:email.value,
+            pwd:pwd.value,
+        }
+        userData.push(obj);
+        localStorage.setItem('data',JSON.stringify(userData));
+    })
+
+    let emsign = document.getElementById('emailsign');
+    let pwdsign=document.getElementById('pwdsign');
+
+
+
+    let sign =document.getElementById('sign');
+    sign.addEventListener('click',function(){
+        userData.forEach((ele)=>{
+            if(ele.em==emsign.value&&ele.pwd==pwdsign.value){
+                alert('Login Successful');
+                return ;
+            }else if(ele.em==emsign.value&&ele.pwd!=pwdsign.value){
+                alert('Enter Right Password')
+                return;
+            }else if(ele.em!=emsign.value&&ele.pwd==pwdsign.value){
+                alert('Enter Right Email');
+                return;
+            }
+        })
+        alert('Enter right Email and Password')
+        return;
+    })
+
+</script>
+</html>
