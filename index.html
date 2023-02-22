@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        #nav {
+            display: flex;
+            width: 99%;
+            margin: auto;
+            background: white;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>img {
+            height: 90px;
+        }
+
+        #nav>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>div>a {
+            margin-right: 20px;
+
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #nav>div>a>i {
+            font-size: 30px;
+            margin-right: 5px;
+        }
+
+        #cont {
+            width: 99%;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2px;
+        }
+
+        #cont>div {
+            background-position: center;
+            background-size: cover;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: center;
+        }
+
+        #cont>div:nth-child(1) {
+            grid-area: 1/1/2/3;
+            background-image: url(https://images.unsplash.com/flagged/photo-1568988041298-26931e97a28e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+        }
+
+        #cont>div:nth-child(2) {
+            background-image: url('./photos/img-1-1.png');
+
+        }
+
+        #cont>div:nth-child(3) {
+            background-image: url('./photos/img-1-2.png');
+
+        }
+
+        #cont>div:nth-child(4) {
+            grid-area: 3/1/4/3;
+            background-image: url('./photos/img-2.png');
+
+        }
+
+        #cont>div:nth-child(5) {
+            grid-area: 4/1/5/3;
+            background-image: url('./photos/img-3.png');
+        }
+
+        #cont>div>img {
+            width: 100%;
+        }
+
+        #cont>div>* {
+            color: white;
+            text-decoration: none;
+            font-size: larger;
+        }
+
+        #cont>div:nth-child(6) {
+            grid-area: 5/1/6/3;
+            height: 20vh;
+            margin-bottom: 50px;
+        }
+
+        #cont>div:nth-child(6)>a {
+            color: black;
+            line-height: 30px;
+        }
+
+        #footer {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #footer div {
+            width: 20%;
+            line-height: 20px;
+        }
+        #footer i{
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+        <img src="./photos/LOGO.PNG" alt="logo">
+        <div>
+            <a href="">GIFTS</a>
+            <a href="">NEW IN</a>
+            <a href="">WOMEN</a>
+            <a href="">MEN</a>
+            <a href="">CHILDREN</a>
+            <a href="">OUTERWERE</a>
+            <a href="">BAGS</a>
+            <a href="">STORIES</a>
+            <a href="">VALUES</a>
+
+        </div>
+        <div>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href=""><i class="fa-solid fa-user"></i></a>
+            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </div>
+    <div id="cont">
+        <div>
+            <h3>Autumn Winter 2023 Show</h3>
+            <a href="">View</a>
+        </div>
+
+        <div>
+            <a href="">Women's New Arrival's </a>
+        </div>
+
+        <div>
+            <a href="">Men's New Arrival's</a>
+        </div>
+
+        <div>
+            <a href="">The Heritge Collection</a>
+        </div>
+
+        <div>
+            <a href="">Bags</a>
+        </div>
+
+        <div>
+           <a href="">CHILDREN</a>
+           <a href="">THE TRENCH COAT</a>
+           <a href="">SCARVES</a>
+        </div>
+
+
+    </div>
+    <div id="footer">
+        <div>
+            <h5>SIGN UP</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit blanditiis quod. Modi quibusdam
+                soluta Ullam, molestiae a! Tenetur error deserunt unde quasi.</p>
+        </div>
+        <div>
+            <h5>STORE LOCATOR</h5>
+        </div>
+        <div>
+            <h5>CUSTOMER SERVICE</h5>
+            <h5>LEGAL & COOKIES</h5>
+            <h5>OUR COMPANY</h5>
+        </div>
+        <div>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>LANGUAGE</h5>
+            <p><i class="fa-sharp fa-solid fa-caret-down"></i>English</p>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>SHIPPING TO</h5>
+        </div>
+    </div>
+
+</body>
+
+</html>
