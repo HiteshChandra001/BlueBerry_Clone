@@ -117,6 +117,11 @@
             <option value="Bag">Bag</option>
             <option value="Sneaker">Sneaker</option>
         </select>
+        <select id="sortPrice">
+            <option value="">price</option>
+            <option value="lth"></option>
+
+        </select>
     </div>
 
     <div id="cont">
@@ -486,6 +491,8 @@
 
     ];
 
+    let cartData=JSON.parse(localStorage.getItem('cartd'))||[];
+
     let womenData = fetchedData.filter((ele) => {
         return ele.gender === 'women';
     })
@@ -514,10 +521,29 @@
 
             let atc=document.createElement('button');
             atc.innerText='Add to Cart';
+            atc.addEventListener('click',function(){
+                if(checkDuplicate(ele)){
+            alert("Product Already in Cart");
+          }else{
+          ele.quant=1;
+          cartData.push(ele);
+          alert('Product Added To Cart');
+          localStorage.setItem('cartd',JSON.stringify(cartData));
+          }
+            })
             
-            div.append(img, name, price, gen, cat)
+            div.append(img, name, price, gen, cat,atc)
             cont.append(div);
         })
+    }
+    
+    function checkDuplicate(product) {
+      for (let i = 0; i < cartData.length; i++) {
+        if (cartData[i].id == product.id) {
+          return true;
+        }
+      }
+      return false;
     }
 
 </script>
