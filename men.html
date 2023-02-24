@@ -52,6 +52,16 @@
             margin-right: 5px;
         }
 
+        #func{
+            background-color: gray;
+            text-align: center;
+            padding:5px;
+        }
+        #func>select{
+            font-size: 20px;
+            padding: 5px;
+        }
+
         #cont {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -91,23 +101,23 @@
 <body>
 
     <div id="nav">
-        <img src="./LOGO.PNG" alt="logo">
+        <img src="./photos/LOGO.PNG" alt="logo">
         <div>
-            <a href="">GIFTS</a>
-            <a href="">NEW IN</a>
-            <a href="">WOMEN</a>
-            <a href="">MEN</a>
-            <a href="">CHILDREN</a>
-            <a href="">OUTERWERE</a>
-            <a href="">BAGS</a>
-            <a href="">STORIES</a>
-            <a href="">VALUES</a>
+            <a href="./women.html">GIFTS</a>
+            <a href="./women.html">NEW IN</a>
+            <a href="./women.html">WOMEN</a>
+            <a href="./men.html">MEN</a>
+            <a href="./men.html">CHILDREN</a>
+            <a href="./men.html">OUTERWERE</a>
+            <a href="./men.html">BAGS</a>
+            <a href="./men.html">STORIES</a>
+            <a href="./men.html">VALUES</a>
 
         </div>
         <div>
             <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href=""><i class="fa-solid fa-user"></i></a>
-            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+            <a href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
         </div>
     </div>
     <div id="func">
@@ -115,11 +125,12 @@
             <option value="">select category</option>
             <option value="Coat">Coat</option>
             <option value="Bag">Bag</option>
-            <option value="Sneaker">Sneaker</option>
+            <option value="Sneakers">Sneaker</option>
         </select>
         <select id="sortPrice">
             <option value="">price</option>
-            <option value="lth"></option>
+            <option value="lth">Low to High</option>
+            <option value="htl">High to Low</option>
 
         </select>
     </div>
@@ -153,14 +164,27 @@
 
     let cont = document.getElementById('cont');
     let catg = document.getElementById('category');
-    let filtered=[];
+    
     catg.addEventListener('change', function () {
         if (catg.value == '') {
-            display(womenData);
+            filtered=menData;
+            display(filtered);
         } else {
-            filtered=womenData.filter((ele)=>{
+            filtered=menData.filter((ele)=>{
                 return catg.value==ele.category;
             })
+            display(filtered);
+        }
+    })
+    let sort=document.getElementById('sortPrice');
+    sort.addEventListener('change',function(){
+        if(sort.value==''){
+            display(filtered);
+        }else if(sort.value=='lth'){
+            filtered=filtered.sort((a,b)=>a.price-b.price);
+            display(filtered);
+        }else if(sort.value=='htl'){
+            filtered=filtered.sort((a,b)=>b.price-a.price);
             display(filtered);
         }
     })
@@ -493,11 +517,12 @@
 
     let cartData=JSON.parse(localStorage.getItem('cartd'))||[];
 
-    let womenData = fetchedData.filter((ele) => {
-        return ele.gender === 'women';
+    let menData = fetchedData.filter((ele) => {
+        return ele.gender === 'men';
     })
+    let filtered=menData;
 
-    display(womenData);
+    display(menData);
 
     function display(data) {
         cont.innerHTML = null;
