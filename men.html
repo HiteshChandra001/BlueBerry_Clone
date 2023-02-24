@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        #nav {
+            display: flex;
+            width: 99%;
+            margin: auto;
+            background: white;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>img {
+            height: 90px;
+        }
+
+        #nav>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>div>a {
+            margin-right: 20px;
+
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #nav>div>a>i {
+            font-size: 30px;
+            margin-right: 5px;
+        }
+
+        #cont {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        #cont>div {
+            box-shadow: 0px 2px 2px gray;
+            border-radius: 5px;
+
+        }
+
+        #cont>div>img {
+            width: 100%;
+        }
+
+        
+        #footer {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            margin-top:50px ;
+        }
+
+        #footer div {
+            width: 20%;
+            line-height: 20px;
+        }
+        #footer i{
+            margin-right: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav">
+        <img src="./LOGO.PNG" alt="logo">
+        <div>
+            <a href="">GIFTS</a>
+            <a href="">NEW IN</a>
+            <a href="">WOMEN</a>
+            <a href="">MEN</a>
+            <a href="">CHILDREN</a>
+            <a href="">OUTERWERE</a>
+            <a href="">BAGS</a>
+            <a href="">STORIES</a>
+            <a href="">VALUES</a>
+
+        </div>
+        <div>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href=""><i class="fa-solid fa-user"></i></a>
+            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </div>
+    <div id="func">
+        <select id="category">
+            <option value="">select category</option>
+            <option value="Coat">Coat</option>
+            <option value="Bag">Bag</option>
+            <option value="Sneaker">Sneaker</option>
+        </select>
+    </div>
+
+    <div id="cont">
+    </div>
+    
+    <div id="footer">
+        <div>
+            <h5>SIGN UP</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit blanditiis quod. Modi quibusdam
+                soluta Ullam, molestiae a! Tenetur error deserunt unde quasi.</p>
+        </div>
+        <div>
+            <h5>STORE LOCATOR</h5>
+        </div>
+        <div>
+            <h5>CUSTOMER SERVICE</h5>
+            <h5>LEGAL & COOKIES</h5>
+            <h5>OUR COMPANY</h5>
+        </div>
+        <div>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>LANGUAGE</h5>
+            <p><i class="fa-sharp fa-solid fa-caret-down"></i>English</p>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>SHIPPING TO</h5>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    let cont = document.getElementById('cont');
+    let catg = document.getElementById('category');
+    let filtered=[];
+    catg.addEventListener('change', function () {
+        if (catg.value == '') {
+            display(womenData);
+        } else {
+            filtered=womenData.filter((ele)=>{
+                return catg.value==ele.category;
+            })
+            display(filtered);
+        }
+    })
+
+    let fetchedData = [
+        {
+            'id': '1',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/FF066228-3413-4BC5-9840-9D2319949EEF?$BBY_V2_SL_1x1$&wid=1251&hei=1251',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1000',
+            'gender': 'women',
+        },
+
+        {
+            'id': '2',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/A68F9DFD-0242-4D1F-B15A-1518E4B43F22?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1200',
+            'gender': 'women',
+        },
+        {
+            'id': '3',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/0F9B3A41-A615-423F-B8B0-F500CC77AC6E?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'women',
+        },
+        {
+            'id': '4',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/6EC7BA9B-8F98-4548-A4FF-0DEEA731AC27?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Tote bag',
+            'category': 'Bag',
+            'price': '500',
+            'gender': 'women',
+        },
+        {
+            'id': '5',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/EFC80F0C-0BA3-4D74-A461-7EF0B05B120B?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London pocket bag',
+            'category': 'Bag',
+            'price': '600',
+            'gender': 'women',
+        },
+
+        {
+            'id': '6',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9970F1D0-7A3D-4B45-83F7-E72A39364DEC?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Note bag',
+            'category': 'Bag',
+            'price': '800',
+            'gender': 'women',
+        },
+
+        {
+            'id': '7',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9970F1D0-7A3D-4B45-83F7-E72A39364DEC?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Note bag',
+            'category': 'Bag',
+            'price': '800',
+            'gender': 'women',
+        },
+        {
+            'id': '8',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/FF066228-3413-4BC5-9840-9D2319949EEF?$BBY_V2_SL_1x1$&wid=1251&hei=1251',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1000',
+            'gender': 'women',
+        },
+
+        {
+            'id': '9',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/A68F9DFD-0242-4D1F-B15A-1518E4B43F22?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1200',
+            'gender': 'women',
+        },
+        {
+            'id': '10',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/0F9B3A41-A615-423F-B8B0-F500CC77AC6E?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'women',
+        },
+        {
+            'id': '11',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/6EC7BA9B-8F98-4548-A4FF-0DEEA731AC27?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Tote bag',
+            'category': 'Bag',
+            'price': '500',
+            'gender': 'women',
+        },
+        {
+            'id': '12',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/EFC80F0C-0BA3-4D74-A461-7EF0B05B120B?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London pocket bag',
+            'category': 'Bag',
+            'price': '600',
+            'gender': 'women',
+        },
+
+        {
+            'id': '13',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9970F1D0-7A3D-4B45-83F7-E72A39364DEC?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Note bag',
+            'category': 'Bag',
+            'price': '800',
+            'gender': 'women',
+        },
+
+        {
+            'id': '14',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9970F1D0-7A3D-4B45-83F7-E72A39364DEC?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'London Note bag',
+            'category': 'Bag',
+            'price': '800',
+            'gender': 'women',
+        },
+        {
+            'id': '15',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/FC9DE590-6A2F-4A94-BFCC-A22D31FA2C28?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Check Sneakers',
+            'category': 'Sneaker',
+            'price': '1000',
+            'gender': 'women',
+        },
+
+        {
+            'id': '16',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/37926625-1B95-40FF-807F-00381B6276D3?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'sports Sneakers',
+            'category': 'Sneaker',
+            'price': '1200',
+            'gender': 'women',
+        },
+        {
+            'id': '17',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/0E5B4C96-659B-4BCA-A4D7-186F22E26C98?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'sports Sneakers',
+            'category': 'Sneaker',
+            'price': '1500',
+            'gender': 'women',
+        },
+        {
+            'id': '18',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/37926625-1B95-40FF-807F-00381B6276D3?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'sports Sneakers',
+            'category': 'Sneaker',
+            'price': '1200',
+            'gender': 'women',
+        },
+        {
+            'id': '19',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/0E5B4C96-659B-4BCA-A4D7-186F22E26C98?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'sports Sneakers',
+            'category': 'Sneaker',
+            'price': '1500',
+            'gender': 'women',
+        },
+
+        {
+            'id': '20',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/37926625-1B95-40FF-807F-00381B6276D3?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'sports Sneakers',
+            'category': 'Sneaker',
+            'price': '1200',
+            'gender': 'women',
+        },
+
+        {
+            'id': '21',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/3332191E-4C4F-4A67-91D1-9F3A57B17DA2?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'men',
+        },
+
+        {
+            'id': '22',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/7B6A9B14-716E-4F60-A041-7115F8698D91?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'car Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'men',
+        },
+
+        {
+            'id': '23',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/2E92A547-F242-42E8-8B23-912CDB0E1DA4?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': ' heritage car Coat',
+            'category': 'Coat',
+            'price': '1700',
+            'gender': 'men',
+        },
+
+        {
+            'id': '24',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/6E08AD06-C494-4C4E-97C2-5016770B011B?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'cotton sneakers',
+            'category': 'Sneakers',
+            'price': '800',
+            'gender': 'men',
+        },
+        {
+            'id': '25',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/D2C6D277-2362-481B-8636-B1C18E7750C3?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'leather sneakers',
+            'category': 'Sneakers',
+            'price': '1000',
+            'gender': 'men',
+        },
+        {
+            'id': '26',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/397E47B9-1BE7-43E0-BA32-4655E6484805?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'white sneakers',
+            'category': 'Sneakers',
+            'price': '900',
+            'gender': 'men',
+        },
+
+        {
+            'id': '27',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9DADD363-4208-40EF-AEC5-6592D667E35F?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Monogram Bag',
+            'category': 'Bag',
+            'price': '500',
+            'gender': 'men',
+        },
+        {
+            'id': '28',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/B2E01C5D-F6AE-4D41-A962-3F10DA664BC5?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Ormond Bag',
+            'category': 'Bag',
+            'price': '600',
+            'gender': 'men',
+        },
+        {
+            'id': '29',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/F6B59C1A-0048-4887-B395-8F9D7421EFFA?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'slim Bag',
+            'category': 'Bag',
+            'price': '700',
+            'gender': 'men',
+        },
+
+        {
+            'id': '30',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/3332191E-4C4F-4A67-91D1-9F3A57B17DA2?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Trench Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'men',
+        },
+
+        {
+            'id': '31',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/7B6A9B14-716E-4F60-A041-7115F8698D91?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'car Coat',
+            'category': 'Coat',
+            'price': '1500',
+            'gender': 'men',
+        },
+
+        {
+            'id': '32',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/2E92A547-F242-42E8-8B23-912CDB0E1DA4?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': ' heritage car Coat',
+            'category': 'Coat',
+            'price': '1700',
+            'gender': 'men',
+        },
+
+        {
+            'id': '33',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/6E08AD06-C494-4C4E-97C2-5016770B011B?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'cotton sneakers',
+            'category': 'Sneakers',
+            'price': '800',
+            'gender': 'men',
+        },
+        {
+            'id': '34',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/D2C6D277-2362-481B-8636-B1C18E7750C3?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'leather sneakers',
+            'category': 'Sneakers',
+            'price': '1000',
+            'gender': 'men',
+        },
+        {
+            'id': '35',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/397E47B9-1BE7-43E0-BA32-4655E6484805?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'white sneakers',
+            'category': 'Sneakers',
+            'price': '900',
+            'gender': 'men',
+        },
+
+        {
+            'id': '36',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/9DADD363-4208-40EF-AEC5-6592D667E35F?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Monogram Bag',
+            'category': 'Bag',
+            'price': '500',
+            'gender': 'men',
+        },
+        {
+            'id': '37',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/B2E01C5D-F6AE-4D41-A962-3F10DA664BC5?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'Ormond Bag',
+            'category': 'Bag',
+            'price': '600',
+            'gender': 'men',
+        },
+        {
+            'id': '38',
+            'image': 'https://assets.burberry.com/is/image/Burberryltd/F6B59C1A-0048-4887-B395-8F9D7421EFFA?$BBY_V2_SL_3x4$&wid=767&hei=1023',
+            'title': 'slim Bag',
+            'category': 'Bag',
+            'price': '700',
+            'gender': 'men',
+        },
+
+    ];
+
+    let womenData = fetchedData.filter((ele) => {
+        return ele.gender === 'women';
+    })
+
+    display(womenData);
+
+    function display(data) {
+        cont.innerHTML = null;
+        data.forEach((ele) => {
+            let div = document.createElement('div');
+
+            let img = document.createElement('img');
+            img.setAttribute('src', ele.image);
+
+            let name = document.createElement('h3');
+            name.innerText = ele.title;
+
+            let gen = document.createElement('h4');
+            gen.innerText = ele.gender;
+
+            let price = document.createElement('h4');
+            price.innerText = ele.price;
+
+            let cat = document.createElement('h4');
+            cat.innerText = ele.category;
+
+            let atc=document.createElement('button');
+            atc.innerText='Add to Cart';
+            
+            div.append(img, name, price, gen, cat)
+            cont.append(div);
+        })
+    }
+
+</script>
+
+</html>
