@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: sans-serif;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        #nav {
+            display: flex;
+            width: 99%;
+            margin: auto;
+            background: white;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>img {
+            height: 90px;
+        }
+
+        #nav>div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        #nav>div>a {
+            margin-right: 20px;
+
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        #nav>div>a>i {
+            font-size: 30px;
+            margin-right: 5px;
+        }
+
+        #cont {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            text-align: center;
+        }
+
+        #cont>div {
+            box-shadow: 0px 2px 2px gray;
+            border-radius: 5px;
+
+        }
+
+        #cont>div>img {
+            width: 100%;
+        }
+
+        #cont>div>*{
+            margin-bottom: 10px;
+        }
+
+        #footer {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 50px;
+        }
+
+        #footer div {
+            width: 20%;
+            line-height: 20px;
+        }
+
+        #footer i {
+            margin-right: 30px;
+        }
+        body>h3{
+            padding: 20px;
+            text-align: center;
+            color: red;
+            font-size: 30px;
+            box-shadow: 0px 1px 5px gray;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav">
+        <img src="./LOGO.PNG" alt="logo">
+        <div>
+            <a href="">GIFTS</a>
+            <a href="">NEW IN</a>
+            <a href="">WOMEN</a>
+            <a href="">MEN</a>
+            <a href="">CHILDREN</a>
+            <a href="">OUTERWERE</a>
+            <a href="">BAGS</a>
+            <a href="">STORIES</a>
+            <a href="">VALUES</a>
+
+        </div>
+        <div>
+            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href=""><i class="fa-solid fa-user"></i></a>
+            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+        </div>
+    </div>
+    <h3>Total = <span id="cart-total"></span></h3>
+   
+
+    <div id="cont">
+    </div>
+
+    <div id="footer">
+        <div>
+            <h5>SIGN UP</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit blanditiis quod. Modi quibusdam
+                soluta Ullam, molestiae a! Tenetur error deserunt unde quasi.</p>
+        </div>
+        <div>
+            <h5>STORE LOCATOR</h5>
+        </div>
+        <div>
+            <h5>CUSTOMER SERVICE</h5>
+            <h5>LEGAL & COOKIES</h5>
+            <h5>OUR COMPANY</h5>
+        </div>
+        <div>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>LANGUAGE</h5>
+            <p><i class="fa-sharp fa-solid fa-caret-down"></i>English</p>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>SHIPPING TO</h5>
+        </div>
+    </div>
+
+</body>
+<script>
+
+    let cont = document.getElementById('cont');
+    let cartTotal = document.getElementById('cart-total');
+
+
+    let cartData = JSON.parse(localStorage.getItem('cartd')) || [];
+
+
+    display(cartData);
+
+    function display(data) {
+        cont.innerHTML = null;
+        data.forEach((ele,ind) => {
+            let div = document.createElement('div');
+
+            let img = document.createElement('img');
+            img.setAttribute('src', ele.image);
+
+            let name = document.createElement('h3');
+            name.innerText = ele.title;
+
+            let gen = document.createElement('h4');
+            gen.innerText = ele.gender;
+
+            let price = document.createElement('h4');
+            price.innerText = ele.price;
+
+            let cat = document.createElement('h4');
+            cat.innerText = ele.category;
+
+            
+        let quant=document.createElement('span');
+        quant.innerText=ele.quant;
+
+        let decBtn=document.createElement('button');
+        decBtn.innerText='-';
+        decBtn.addEventListener('click',function(){
+          if(ele.quant>1){
+            ele.quant--;
+          quant.innerText=ele.quant;
+          localStorage.setItem('cartd',JSON.stringify(cartData));
+          display(cartData);
+          }
+          
+        })
+
+        let incBtn=document.createElement('button');
+        incBtn.innerText='+';
+        incBtn.addEventListener('click',function(){
+          ele.quant++;
+          quant.innerText=ele.quant;
+          localStorage.setItem('cartd',JSON.stringify(cartData));
+          display(cartData);
+        })
+
+            let del = document.createElement('button');
+            del.innerText = 'Delete';
+            del.addEventListener('click', function () {
+                cartData = cartData.filter((ele,i) => {
+                    if(ind==i){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                })
+                localStorage.setItem('cartd', JSON.stringify(cartData));
+                display(cartData)
+            })
+
+            
+        let sum=0;
+        for(let i=0;i<cartData.length;i++){
+          sum+=cartData[i].quant*cartData[i].price;
+        }
+
+        document.getElementById("cart-total").textContent=sum;
+
+            div.append(img, name, price, gen, cat,decBtn,quant,incBtn, del)
+            cont.append(div);
+        })
+    }
+
+</script>
+
+</html>
