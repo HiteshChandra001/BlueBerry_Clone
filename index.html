@@ -29,9 +29,9 @@
             align-items: center;
         }
 
-        #nav>img {
+        /* #nav>img {
             height: 90px;
-        }
+        } */
 
         #nav>div {
             display: flex;
@@ -133,6 +133,20 @@
         #footer i{
             margin-right: 30px;
         }
+
+        /* medium screens */
+
+        @media only screen and (min-width:601px) and (max-width:1000px){
+           #nav>div:first-of-type{
+            display: none;
+           }
+        }
+
+        @media only screen  and (max-width:600px){
+           #nav>div:first-of-type{
+            display: none;
+           }
+        }
     </style>
 </head>
 
@@ -140,15 +154,10 @@
     <div id="nav">
         <a href="./index.html"><img src="./photos/LOGO.PNG" alt="logo"></a>
         <div>
-            <a href="./women.html">GIFTS</a>
-            <a href="./women.html">NEW IN</a>
+           
             <a href="./women.html">WOMEN</a>
             <a href="./men.html">MEN</a>
-            <a href="./men.html">CHILDREN</a>
-            <a href="./men.html">OUTERWERE</a>
-            <a href="./men.html">BAGS</a>
-            <a href="./men.html">STORIES</a>
-            <a href="./men.html">VALUES</a>
+           
         </div>
         <div>
             <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>

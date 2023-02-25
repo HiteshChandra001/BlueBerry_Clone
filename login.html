@@ -42,9 +42,11 @@
 
         #nav>div>a {
             margin-right: 20px;
-
             font-weight: bold;
             text-decoration: none;
+            box-shadow: 0px 2px 2px skyblue;
+            border-radius: 5px;
+            padding: 5px;
         }
 
         #nav>div>a>i {
@@ -81,29 +83,69 @@
             height: 35px;
             font-size: 20px;
         }
-        
 
+        #log-reg button{
+            background-color: gold;
+            border: 1px solid green;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        
+        #footer {
+            width: 95%;
+            margin: auto;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #footer div {
+            width: 20%;
+            line-height: 20px;
+        }
+        #footer i{
+            margin-right: 30px;
+        }
+        
+        
+        @media only screen and (min-width:601px) and (max-width:1000px){
+           #nav>div:first-of-type{
+            display: none;
+           }
+           
+        }
+
+        @media only screen  and (max-width:600px){
+           
+            #nav>div:first-of-type{
+            display: none;
+           }
+           #nav>div:first-of-type{
+            display: none;
+           }
+           #log-reg{
+            flex-direction: column;
+        }
+        #log-reg>div{
+            width: 85%;
+        }
+          
+        }
     </style>
 </head>
 <body>
     
     <div id="nav">
-        <img src="./photos/LOGO.PNG" alt="logo">
+        <a href="./index.html"><img src="./photos/LOGO.PNG" alt="logo"></a>
+        
         <div>
-            <a href="">GIFTS</a>
-            <a href="">NEW IN</a>
-            <a href="">WOMEN</a>
-            <a href="">MEN</a>
-            <a href="">CHILDREN</a>
-            <a href="">OUTERWERE</a>
-            <a href="">BAGS</a>
-            <a href="">STORIES</a>
-            <a href="">VALUES</a>
+            <a href="./women.html">WOMEN</a>
+            <a href="./men.html">MEN</a>
 
         </div>
         <div>
-            <a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
-            <a href=""><i class="fa-solid fa-bag-shopping"></i></a>
+            <a href="./index.html"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="./cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
         </div>
     </div>
     <div id="cont">
@@ -156,7 +198,26 @@
 
         </div>
     </div>
-    
+    <div id="footer">
+        <div>
+            <h5>SIGN UP</h5>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit velit blanditiis quod. Modi quibusdam
+                soluta Ullam, molestiae a! Tenetur error deserunt unde quasi.</p>
+        </div>
+        <div>
+            <h5>STORE LOCATOR</h5>
+        </div>
+        <div>
+            <h5>CUSTOMER SERVICE</h5>
+            <h5>LEGAL & COOKIES</h5>
+            <h5>OUR COMPANY</h5>
+        </div>
+        <div>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>LANGUAGE</h5>
+            <p><i class="fa-sharp fa-solid fa-caret-down"></i>English</p>
+            <h5><i class="fa-sharp fa-solid fa-caret-down"></i>SHIPPING TO</h5>
+        </div>
+    </div>
 </body>
 <script>
     let userData=JSON.parse(localStorage.getItem('data'))||[];
@@ -170,7 +231,7 @@
 
     let regist=document.getElementById('reg');
     
-    regist.addEventListener('click',function(e){
+    regist.addEventListener('submit',function(e){
         e.preventDefault();
         let obj={
             loc:loc.value,
@@ -191,20 +252,16 @@
 
     let sign =document.getElementById('sign');
     sign.addEventListener('click',function(){
+        if(emsign.value!='' && pwdsign.value!=''){
+            
         userData.forEach((ele)=>{
             if(ele.em==emsign.value&&ele.pwd==pwdsign.value){
-                alert('Login Successful');
-                return ;
-            }else if(ele.em==emsign.value&&ele.pwd!=pwdsign.value){
-                alert('Enter Right Password')
-                return;
-            }else if(ele.em!=emsign.value&&ele.pwd==pwdsign.value){
-                alert('Enter Right Email');
-                return;
+                return alert('Login Successful');
             }
         })
-        alert('Enter right Email and Password')
-        return;
+        return alert('Enter right Email and Password');
+        }
+       
     })
 
 </script>
