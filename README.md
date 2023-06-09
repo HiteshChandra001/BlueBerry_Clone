@@ -1,2 +1,5 @@
 # -rough-support-2269
-Ecom project
+Qroove (Burberry clone) is a Ecommerce website offers fashion products.
+
+Deploye link: https://comforting-pegasus-e90488.netlify.app/
+
